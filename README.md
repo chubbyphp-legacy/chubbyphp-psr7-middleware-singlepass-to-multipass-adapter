@@ -21,17 +21,23 @@ Through [Composer](http://getcomposer.org) as [chubbyphp/chubbyphp-psr7-middlewa
 
 ## Usage
 
+The variable `$next`, within the single pass middleware arguments will always be a \Closure from the adapter.
+
 ```{.php}
 <?php
 
 use Chubbyphp\Psr7SinglePassToMultiPassAdapter\Psr7SinglePassToMultiPassAdapter;
 
-$existingSinglePassMiddleware = function (RequestInterface $request, callable $next = null) {
-    if (null === $next) {
-        return new MyFancyPsr7Response();
-    }
+$existingSinglePassMiddleware = function (RequestInterface $request, callable $next) {
+    $request = $request->withHeader('X-Custom', '1');
 
-    return $next($request);
+    $response = $next($request);
+
+    $body = $response->getBody();
+    $body->seek(0, SEEK_END);
+    $body->write('<!-- provided by x-custom -->');
+
+    return $response;
 };
 
 $adapter = new Psr7SinglePassToMultiPassAdapter($existingSinglePassMiddleware);

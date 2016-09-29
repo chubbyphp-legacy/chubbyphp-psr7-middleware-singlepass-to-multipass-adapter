@@ -16,7 +16,7 @@ class Psr7SinglePassToMultiPassAdapterTest extends \PHPUnit_Framework_TestCase
         $givenRequest = $this->getMockBuilder(RequestInterface::class)->getMockForAbstractClass();
         $givenResponse = $this->getMockBuilder(ResponseInterface::class)->getMockForAbstractClass();
 
-        $adapter = new Psr7SinglePassToMultiPassAdapter(function (RequestInterface $request, callable $next = null) {
+        $adapter = new Psr7SinglePassToMultiPassAdapter(function (RequestInterface $request, callable $next) {
             return $next($request);
         });
 
@@ -28,7 +28,7 @@ class Psr7SinglePassToMultiPassAdapterTest extends \PHPUnit_Framework_TestCase
         $givenRequest = $this->getMockBuilder(RequestInterface::class)->getMockForAbstractClass();
         $givenResponse = $this->getMockBuilder(ResponseInterface::class)->getMockForAbstractClass();
 
-        $adapter = new Psr7SinglePassToMultiPassAdapter(function (RequestInterface $request, callable $next = null) {
+        $adapter = new Psr7SinglePassToMultiPassAdapter(function (RequestInterface $request, callable $next) {
             return $next($request);
         });
 
@@ -40,7 +40,7 @@ class Psr7SinglePassToMultiPassAdapterTest extends \PHPUnit_Framework_TestCase
                 function (
                     RequestInterface $request,
                     ResponseInterface $response,
-                    callable $next = null
+                    callable $next
                 ) use ($givenRequest, $givenResponse) {
                     self::assertSame($givenRequest, $request);
                     self::assertSame($givenResponse, $response);
@@ -57,7 +57,7 @@ class Psr7SinglePassToMultiPassAdapterTest extends \PHPUnit_Framework_TestCase
         $givenRequest = $this->getMockBuilder(RequestInterface::class)->getMockForAbstractClass();
         $givenResponse = $this->getMockBuilder(ResponseInterface::class)->getMockForAbstractClass();
 
-        $adapter = new Psr7SinglePassToMultiPassAdapter(function (RequestInterface $request, callable $next = null) {
+        $adapter = new Psr7SinglePassToMultiPassAdapter(function (RequestInterface $request, callable $next) {
             return $this->getMockBuilder(ResponseInterface::class)->getMockForAbstractClass();
         });
 
@@ -72,14 +72,14 @@ class Psr7SinglePassToMultiPassAdapterTest extends \PHPUnit_Framework_TestCase
         $givenRequest = $this->getMockBuilder(RequestInterface::class)->getMockForAbstractClass();
         $givenResponse = $this->getMockBuilder(ResponseInterface::class)->getMockForAbstractClass();
 
-        $adapter = new Psr7SinglePassToMultiPassAdapter(function (RequestInterface $request, callable $next = null) {
+        $adapter = new Psr7SinglePassToMultiPassAdapter(function (RequestInterface $request, callable $next) {
             return $this->getMockBuilder(ResponseInterface::class)->getMockForAbstractClass();
         });
 
         $returnedResponse = $adapter(
             $givenRequest,
             $givenResponse,
-            function (RequestInterface $request, ResponseInterface $response, callable $next = null) {
+            function (RequestInterface $request, ResponseInterface $response, callable $next) {
                 throw new \Exception('This code should not be called!');
             }
         );
