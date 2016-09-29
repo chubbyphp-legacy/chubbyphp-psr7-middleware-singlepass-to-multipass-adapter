@@ -40,7 +40,7 @@ class Psr7SinglePassToMultiPassAdapterTest extends \PHPUnit_Framework_TestCase
                 function (
                     RequestInterface $request,
                     ResponseInterface $response,
-                    callable $next
+                    callable $next = null
                 ) use ($givenRequest, $givenResponse) {
                     self::assertSame($givenRequest, $request);
                     self::assertSame($givenResponse, $response);
