@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Chubbyphp\Psr7SinglePassToMultiPassAdapter;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
