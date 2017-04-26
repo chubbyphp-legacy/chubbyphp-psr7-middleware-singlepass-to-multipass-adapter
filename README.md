@@ -4,6 +4,8 @@
 [![Total Downloads](https://poser.pugx.org/chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter/downloads.png)](https://packagist.org/packages/chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter)
 [![Latest Stable Version](https://poser.pugx.org/chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter/v/stable.png)](https://packagist.org/packages/chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter/?branch=master)
+
 
 ## Description
 
@@ -19,11 +21,15 @@ a multipass environment as for example [slim][2] or [zend-expressive][3] are.
 
 Through [Composer](http://getcomposer.org) as [chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter][1].
 
+```sh
+composer require chubbyphp/chubbyphp-psr7-middleware-singlepass-to-multipass-adapter "~1.0"
+```
+
 ## Usage
 
 The variable `$next`, within the single pass middleware arguments will always be a \Closure from the adapter.
 
-```{.php}
+```php
 <?php
 
 use Chubbyphp\Psr7SinglePassToMultiPassAdapter\Psr7SinglePassToMultiPassAdapter;
