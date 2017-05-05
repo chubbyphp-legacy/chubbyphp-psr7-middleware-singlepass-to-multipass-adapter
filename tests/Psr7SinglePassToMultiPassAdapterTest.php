@@ -7,7 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @covers Chubbyphp\Psr7SinglePassToMultiPassAdapter\Psr7SinglePassToMultiPassAdapter
+ * @covers \Chubbyphp\Psr7SinglePassToMultiPassAdapter\Psr7SinglePassToMultiPassAdapter
  */
 class Psr7SinglePassToMultiPassAdapterTest extends \PHPUnit_Framework_TestCase
 {
